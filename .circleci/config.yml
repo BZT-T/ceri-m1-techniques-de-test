@@ -27,5 +27,5 @@ workflows:
         steps:
           - checkout
           - run: java --8
-      - test:
+      - test
 
