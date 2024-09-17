@@ -19,5 +19,13 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - build
-      - test
+      - build:
+        filters:
+            branches:
+              only:
+                - main
+        steps:
+          - checkout
+          - run: java --8
+      - test:
+
