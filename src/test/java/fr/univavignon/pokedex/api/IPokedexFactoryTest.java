@@ -13,11 +13,9 @@ public class IPokedexFactoryTest {
 
     @Before
     public void setUp() {
-        // Création de mocks pour IPokemonMetadataProvider et IPokemonFactory
+        // Création de mocks
         metadataProvider = mock(IPokemonMetadataProvider.class);
         pokemonFactory = mock(IPokemonFactory.class);
-
-        // Création d'un mock pour IPokedexFactory
         pokedexFactory = mock(IPokedexFactory.class);
 
         // Configuration du comportement de la méthode createPokedex
@@ -30,10 +28,7 @@ public class IPokedexFactoryTest {
         // Test de création d'un pokedex avec les mocks fournis
         IPokedex pokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
 
-        // Vérification que le pokedex créé n'est pas nul
         assertNotNull(pokedex);
-
-        // Vérification que la méthode createPokedex a été appelée avec les bons arguments
         verify(pokedexFactory).createPokedex(metadataProvider, pokemonFactory);
     }
 }

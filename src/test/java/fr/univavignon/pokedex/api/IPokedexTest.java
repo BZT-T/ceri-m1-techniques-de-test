@@ -14,8 +14,8 @@ import static org.mockito.Mockito.*;
 public class IPokedexTest {
 
     private IPokedex pokedex;
-    private Pokemon bulbasaur;
-    private Pokemon vaporeon;
+    private Pokemon bulbizarre;
+    private Pokemon aquali;
 
     @Before
     public void setUp() throws PokedexException {
@@ -23,44 +23,24 @@ public class IPokedexTest {
         pokedex = mock(IPokedex.class);
 
         // Création de deux instances de Pokemon pour les tests
-        bulbasaur = new Pokemon(
-                0, // Index
-                "Bulbizarre", // Nom
-                126, // Attaque
-                126, // Défense
-                90, // Endurance
-                613, // CP
-                64, // HP
-                4000, // Poussière d'étoile
-                4, // Bonbons
-                56.0 // IV
-        );
+        bulbizarre = new Pokemon(0, "Bulbizarre", 126,126,90, 613,64, 4000,
+                4, 56.0);
 
-        vaporeon = new Pokemon(
-                133, // Index
-                "Aquali", // Nom
-                186, // Attaque
-                168, // Défense
-                260, // Endurance
-                2729, // CP
-                202, // HP
-                5000, // Poussière d'étoile
-                4, // Bonbons
-                100.0 // IV
-        );
+        aquali = new Pokemon(133,"Aquali",186,168, 260,2729,202, 5000,
+                4,100.0);
 
         // Configuration du comportement des méthodes du mock
         when(pokedex.size()).thenReturn(2);
-        when(pokedex.addPokemon(bulbasaur)).thenReturn(0);
-        when(pokedex.addPokemon(vaporeon)).thenReturn(1);
-        when(pokedex.getPokemon(0)).thenReturn(bulbasaur);
-        when(pokedex.getPokemon(1)).thenReturn(vaporeon);
+        when(pokedex.addPokemon(bulbizarre)).thenReturn(0);
+        when(pokedex.addPokemon(aquali)).thenReturn(1);
+        when(pokedex.getPokemon(0)).thenReturn(bulbizarre);
+        when(pokedex.getPokemon(1)).thenReturn(aquali);
         when(pokedex.getPokemon(151)).thenThrow(PokedexException.class);
         when(pokedex.getPokemon(-1)).thenThrow(PokedexException.class);
 
         List<Pokemon> pokemons = new ArrayList<>();
-        pokemons.add(bulbasaur);
-        pokemons.add(vaporeon);
+        pokemons.add(bulbizarre);
+        pokemons.add(aquali);
 
         when(pokedex.getPokemons()).thenReturn(Collections.unmodifiableList(pokemons));
         when(pokedex.getPokemons(any(Comparator.class))).thenReturn(Collections.unmodifiableList(pokemons));
@@ -75,21 +55,21 @@ public class IPokedexTest {
     @Test
     public void testAddPokemon() {
         // Vérifie l'ajout des Pokémon dans le pokédex
-        int bulbasaurIndex = pokedex.addPokemon(bulbasaur);
-        int vaporeonIndex = pokedex.addPokemon(vaporeon);
+        int bulbizarreIndex = pokedex.addPokemon(bulbizarre);
+        int aqualiIndex = pokedex.addPokemon(aquali);
 
-        assertEquals(0, bulbasaurIndex);
-        assertEquals(1, vaporeonIndex);
+        assertEquals(0, bulbizarreIndex);
+        assertEquals(1, aqualiIndex);
     }
 
     @Test
     public void testGetPokemon() throws PokedexException {
         // Vérifie la récupération d'un Pokémon par son index
-        Pokemon retrievedBulbasaur = pokedex.getPokemon(0);
-        Pokemon retrievedVaporeon = pokedex.getPokemon(1);
+        Pokemon retrievedBulbizarre = pokedex.getPokemon(0);
+        Pokemon retrievedAquali = pokedex.getPokemon(1);
 
-        assertEquals(bulbasaur, retrievedBulbasaur);
-        assertEquals(vaporeon, retrievedVaporeon);
+        assertEquals(bulbizarre, retrievedBulbizarre);
+        assertEquals(aquali, retrievedAquali);
 
         // Vérifie qu'une exception est levée pour un index invalide
         assertThrows(PokedexException.class, () -> pokedex.getPokemon(151));
@@ -101,8 +81,16 @@ public class IPokedexTest {
         // Vérifie la récupération de la liste des Pokémon
         List<Pokemon> pokemons = pokedex.getPokemons();
         assertEquals(2, pokemons.size());
-        assertTrue(pokemons.contains(bulbasaur));
-        assertTrue(pokemons.contains(vaporeon));
+        assertTrue(pokemons.contains(bulbizarre));
+        assertTrue(pokemons.contains(aquali));
     }
 
+    @Test
+    public void testGetPokemonsWithComparator() {
+        // Vérifie la récupération de la liste des Pokémon avec un comparateur
+        List<Pokemon> sortedPokemons = pokedex.getPokemons(Comparator.comparing(Pokemon::getCp));
+        assertEquals(2, sortedPokemons.size());
+        assertTrue(sortedPokemons.contains(bulbizarre));
+        assertTrue(sortedPokemons.contains(aquali));
+    }
 }
