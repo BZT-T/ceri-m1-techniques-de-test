@@ -84,7 +84,7 @@ public class IPokemonFactoryTest {
 
         assertEquals(createdBulbasaur.getAttack(), pokemonMetadata.getAttack() + valeurBonus);
         assertEquals(createdBulbasaur.getDefense(), pokemonMetadata.getDefense() + valeurBonus);
-        assertEquals(createdBulbasaur.getStamina(), pokemonMetadata.getStamina() - valeurBonus);
+        assertEquals(createdBulbasaur.getStamina(), pokemonMetadata.getStamina() + valeurBonus);
     }
 
 }

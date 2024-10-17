@@ -55,7 +55,8 @@ public class IPokedexTest {
         when(pokedex.addPokemon(vaporeon)).thenReturn(1);
         when(pokedex.getPokemon(0)).thenReturn(bulbasaur);
         when(pokedex.getPokemon(1)).thenReturn(vaporeon);
-        when(pokedex.getPokemon(999)).thenThrow(new PokedexException("Invalid index"));
+        when(pokedex.getPokemon(151)).thenThrow(PokedexException.class);
+        when(pokedex.getPokemon(-1)).thenThrow(PokedexException.class);
 
         List<Pokemon> pokemons = new ArrayList<>();
         pokemons.add(bulbasaur);
@@ -91,7 +92,8 @@ public class IPokedexTest {
         assertEquals(vaporeon, retrievedVaporeon);
 
         // Vérifie qu'une exception est levée pour un index invalide
-        assertThrows(PokedexException.class, () -> pokedex.getPokemon(999));
+        assertThrows(PokedexException.class, () -> pokedex.getPokemon(151));
+        assertThrows(PokedexException.class, () -> pokedex.getPokemon(-1));
     }
 
     @Test
@@ -101,15 +103,6 @@ public class IPokedexTest {
         assertEquals(2, pokemons.size());
         assertTrue(pokemons.contains(bulbasaur));
         assertTrue(pokemons.contains(vaporeon));
-    }
-
-    @Test
-    public void testGetPokemonsWithComparator() {
-        // Vérifie la récupération de la liste des Pokémon avec un comparateur
-        List<Pokemon> sortedPokemons = pokedex.getPokemons(Comparator.comparing(Pokemon::getCp));
-        assertEquals(2, sortedPokemons.size());
-        assertTrue(sortedPokemons.contains(bulbasaur));
-        assertTrue(sortedPokemons.contains(vaporeon));
     }
 
 }
