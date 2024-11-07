@@ -6,20 +6,22 @@ orbs:
 jobs:
   build:
     docker:
-      - image: openjdk:17-jdk  # Utilisation de l'image Docker pour Java 8
+      - image: circleci/openjdk:17  # Image CircleCI OpenJDK 17
     steps:
-      - checkout  # Récupère le code source
-
+      - checkout
+      - run:
+          name: Install Maven
+          command: |
+            apt-get update
+            apt-get install -y maven
       - run:
           name: Maven install dependencies
           command: mvn install -DskipTests=true
-
       - run:
           name: Maven run tests
           command: mvn test
-
       - codecov/upload:
-          file: target/site/jacoco/jacoco.xml  # Chemin vers votre rapport JaCoCo
+          file: target/site/jacoco/jacoco.xml
 
 workflows:
   version: 2
