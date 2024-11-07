@@ -17,6 +17,8 @@ jobs:
       - run:
           name: Maven run tests
           command: mvn test
+      - codecov/upload:
+          file: target/site/jacoco/jacoco.xml
 
 workflows:
   version: 2
