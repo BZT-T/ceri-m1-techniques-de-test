@@ -54,7 +54,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.12</version> <!-- Vérifiez si une version plus récente est disponible -->
+                <version>0.8.12</version>
                 <executions>
                     <execution>
                         <goals>
