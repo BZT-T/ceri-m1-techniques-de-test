@@ -3,11 +3,6 @@ version: 2.1
 orbs:
   codecov: codecov/codecov@4.0.1
 
-executors:
-  java-executor:
-    docker:
-      - image: circleci/openjdk:8-jdk
-
 jobs:
   build:
     executor: java-executor
