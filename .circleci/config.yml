@@ -25,7 +25,7 @@ jobs:
           command: mvn -B test
       - codecov/upload:
           file: ./target/site/jacoco/jacoco.xml # Chemin vers votre rapport JaCoCo
-          token: $CODECOV_TOKEN
+          token: CODECOV_TOKEN
 
 workflows:
   version: 2
