@@ -18,8 +18,7 @@ jobs:
           name: Maven run tests
           command: mvn test
       - codecov/upload:
-          file: target/site/jacoco/jacoco.xml # Chemin vers votre rapport JaCoCo
-          token: $CODECOV_TOKEN # Utilisation de la variable d'environnement pour le token
+          file: ./target/site/jacoco/jacoco.xml # Chemin vers votre rapport JaCoCo
 
 workflows:
   version: 2
