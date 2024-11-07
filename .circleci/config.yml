@@ -5,8 +5,10 @@ orbs:
 
 jobs:
   build:
+    docker:
+      - image: circleci/openjdk:8-jdk  # Utilisation de l'image Docker pour Java 8
     steps:
-      - checkout # Récupère le code source
+      - checkout  # Récupère le code source
 
       - run:
           name: Maven install dependencies
@@ -17,7 +19,7 @@ jobs:
           command: mvn test
 
       - codecov/upload:
-          file: target/site/jacoco/jacoco.xml # Chemin vers votre rapport de couverture (à adapter selon votre projet)
+          file: target/site/jacoco/jacoco.xml  # Chemin vers votre rapport JaCoCo
 
 workflows:
   version: 2
@@ -27,5 +29,3 @@ workflows:
           filters:
             branches:
               only: master
-
-
