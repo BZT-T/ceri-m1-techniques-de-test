@@ -28,7 +28,5 @@ workflows:
           filters:
             branches:
               only: master
-  upload-to-codecov:
-    jobs:
       - checkout
       - codecov/upload
