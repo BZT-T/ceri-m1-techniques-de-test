@@ -18,15 +18,13 @@ jobs:
           name: Maven run tests
           command: mvn test
       - codecov/upload:
-          file: target/site/jacoco/jacoco.xml
+          file: target/site/jacoco/jacoco.xml # Chemin vers votre rapport JaCoCo
 
 workflows:
   version: 2
-  build_and_test:
+  build_and_upload:
     jobs:
       - build:
           filters:
             branches:
               only: master
-      - checkout
-      - codecov/upload
