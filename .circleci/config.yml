@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:17  # Image CircleCI OpenJDK 17
+      - image: openjdk:17  # Image CircleCI OpenJDK 17
     steps:
       - checkout
       - run:
