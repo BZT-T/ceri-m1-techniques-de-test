@@ -17,9 +17,9 @@ jobs:
       - run:
           name: Maven run tests
           command: mvn test
-      - run:
-          name: Install dependencies
-          command: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+#      - run:
+#          name: Install dependencies
+#          command: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       - run : mvn jacoco:report
       - run:
           name: Run tests and collect coverage
