@@ -17,6 +17,9 @@ jobs:
       - run:
           name: Maven run tests
           command: mvn test
+      - run:
+          name: Run tests and collect coverage
+          command: mvn -B test
       - codecov/upload:
           file: ./target/site/jacoco/jacoco.xml # Chemin vers votre rapport JaCoCo
 
