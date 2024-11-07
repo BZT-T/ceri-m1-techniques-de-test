@@ -5,7 +5,6 @@ orbs:
 
 jobs:
   build:
-    executor: java-executor
     steps:
       - checkout # Récupère le code source
 
