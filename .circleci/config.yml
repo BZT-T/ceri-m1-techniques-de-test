@@ -1,23 +1,33 @@
 version: 2.1
 
-jobs:
-  build:
+orbs:
+  codecov: codecov/codecov@4.0.1
+
+executors:
+  java-executor:
     docker:
-      # Utiliser une image Docker avec Java 8 ou supérieur
       - image: circleci/openjdk:8-jdk
 
+jobs:
+  build:
+    executor: java-executor
     steps:
       - checkout # Récupère le code source
+
       - run:
           name: Maven install dependencies
           command: mvn install -DskipTests=true
+
       - run:
           name: Maven run tests
           command: mvn test
 
+      - codecov/upload:
+          file: target/site/jacoco/jacoco.xml # Chemin vers votre rapport de couverture (à adapter selon votre projet)
+
 workflows:
   version: 2
-  build_and_test:
+  build_and_upload:
     jobs:
       - build:
           filters:
