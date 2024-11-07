@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # Utiliser une image Docker avec Java 8 ou supérieur
-      - image: circleci/openjdk:8-jdk
+      - image: cimg/openjdk:18.0.2
 
     steps:
       - checkout # Récupère le code source
@@ -18,13 +18,16 @@ jobs:
           name: Maven run tests
           command: mvn test
       - run:
+          name: Install dependencies
+          command: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+      - run:
           name: Run tests and collect coverage
           command: mvn -B test
       - codecov/upload:
           file: ./target/site/jacoco/jacoco.xml # Chemin vers votre rapport JaCoCo
 
 workflows:
-  version: 2
+  version: 2.1
   build_and_upload:
     jobs:
       - build:
