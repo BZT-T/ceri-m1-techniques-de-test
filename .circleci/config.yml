@@ -11,6 +11,7 @@ jobs:
 
     steps:
       - checkout # Récupère le code source
+      - run : Maven clean install
       - run:
           name: Maven install dependencies
           command: mvn install -DskipTests=true
