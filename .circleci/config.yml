@@ -30,9 +30,10 @@ jobs:
       - run:
           name: Run tests and collect coverage
           command: mvn -B test
-      - codecov/upload:
-          file: ./target/site/jacoco/jacoco.xml # Chemin vers votre rapport JaCoCo
-          token: CODECOV_TOKEN
+      - run:
+          name: Upload coverage to Codecov
+          command: |-
+            curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN -f target/site/jacoco/jacoco.xml -r BZT-T/ceri-m1-techniques-de-test
 
 workflows:
   version: 2
