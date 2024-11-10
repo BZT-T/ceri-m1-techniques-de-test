@@ -35,3 +35,15 @@ Pour chaque rendu vous devez créer un tag à partir du commit qui correspond à
 Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin de séance sera celui considéré.
 
 [^1]: Si vous n’êtes vraiment pas à l’aise avec cet outil nous vous conseillons quand même vivement de vous y mettre.
+
+# Projet Pokedex
+
+**Nom :** BOUAZZATI 
+**Prénom :** Yassine
+**Groupe :** ILSEN - ALT - GRP 1
+
+**Badge CircleCI :**
+[![CircleCI](https://dl.circleci.com/insights-snapshot/circleci/DVzLVj9QfR8WvAZuxU3Evm/UywPbpEVVfXvPEBWapSVj4/circleci-project-setup/build-and-test/badge.svg?window=30d)](https://app.circleci.com/insights/circleci/DVzLVj9QfR8WvAZuxU3Evm/UywPbpEVVfXvPEBWapSVj4/workflows/build-and-test/overview?branch=circleci-project-setup&reporting-window=last-30-days&insights-snapshot=true)
+
+**Badge CodeCov :**
+[![codecov](https://codecov.io/github/BZT-T/ceri-m1-techniques-de-test/graph/badge.svg?token=G6CC6A2T1A)](https://codecov.io/github/BZT-T/ceri-m1-techniques-de-test)
