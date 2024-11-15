@@ -38,12 +38,12 @@ Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin d
 
 # Projet Pokedex
 
-**Nom :** BOUAZZATI 
+**Nom :** BOUAZZATI
 **Prénom :** Yassine
 **Groupe :** ILSEN - ALT - GRP 1
 
 **Badge CircleCI :**
-[![CircleCI](https://dl.circleci.com/insights-snapshot/circleci/DVzLVj9QfR8WvAZuxU3Evm/UywPbpEVVfXvPEBWapSVj4/circleci-project-setup/build-and-test/badge.svg?window=30d)](https://app.circleci.com/insights/circleci/DVzLVj9QfR8WvAZuxU3Evm/UywPbpEVVfXvPEBWapSVj4/workflows/build-and-test/overview?branch=circleci-project-setup&reporting-window=last-30-days&insights-snapshot=true)
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/DVzLVj9QfR8WvAZuxU3Evm/e299e9ec-0fef-4626-850a-9ab93bcf422f/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/DVzLVj9QfR8WvAZuxU3Evm/e299e9ec-0fef-4626-850a-9ab93bcf422f/tree/master)
 
 **Badge CodeCov :**
 [![codecov](https://codecov.io/github/BZT-T/ceri-m1-techniques-de-test/graph/badge.svg?token=G6CC6A2T1A)](https://codecov.io/github/BZT-T/ceri-m1-techniques-de-test)

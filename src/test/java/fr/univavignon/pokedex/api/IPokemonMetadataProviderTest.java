@@ -14,12 +14,7 @@ public class IPokemonMetadataProviderTest {
     @BeforeEach
     public void setUp() throws PokedexException {
         // Création d'un mock pour l'interface
-        metadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
-
-        // Configuration du comportement du mock
-        Mockito.when(metadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
-        Mockito.when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(133, "Aquali", 186, 168, 260));
-        Mockito.when(metadataProvider.getPokemonMetadata(-1)).thenThrow(new PokedexException("Invalid index"));
+        metadataProvider = new PokemonMetadataProvider();
     }
 
     @Test
@@ -30,6 +25,15 @@ public class IPokemonMetadataProviderTest {
         assertEquals(126, metadata.getAttack());
         assertEquals(126, metadata.getDefense());
         assertEquals(90, metadata.getStamina());
+
+    }@Test
+    public void testGetPokemonMetadataValidIndex2() throws PokedexException {
+        PokemonMetadata metadata = metadataProvider.getPokemonMetadata(133);
+        assertEquals(133, metadata.getIndex());
+        assertEquals("Aquali", metadata.getName());
+        assertEquals(186, metadata.getAttack());
+        assertEquals(168, metadata.getDefense());
+        assertEquals(260, metadata.getStamina());
     }
 
     @Test

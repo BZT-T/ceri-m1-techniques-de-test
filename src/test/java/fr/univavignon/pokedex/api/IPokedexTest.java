@@ -13,14 +13,19 @@ import static org.mockito.Mockito.*;
 
 public class IPokedexTest {
 
+    private IPokemonMetadataProvider metadataProvider;
+    private IPokemonFactory pokemonFactory;
     private IPokedex pokedex;
     private Pokemon bulbizarre;
     private Pokemon aquali;
 
     @Before
     public void setUp() throws PokedexException {
-        // Création d'un mock pour IPokedex
-        pokedex = mock(IPokedex.class);
+        // Création des mocks
+        metadataProvider = mock(IPokemonMetadataProvider.class);
+        pokemonFactory = mock(IPokemonFactory.class);
+
+        pokedex = new Pokedex(metadataProvider,pokemonFactory);
 
         // Création de deux instances de Pokemon pour les tests
         bulbizarre = new Pokemon(0, "Bulbizarre", 126,126,90, 613,64, 4000,
@@ -30,20 +35,20 @@ public class IPokedexTest {
                 4,100.0);
 
         // Configuration du comportement des méthodes du mock
-        when(pokedex.size()).thenReturn(2);
-        when(pokedex.addPokemon(bulbizarre)).thenReturn(0);
-        when(pokedex.addPokemon(aquali)).thenReturn(1);
-        when(pokedex.getPokemon(0)).thenReturn(bulbizarre);
-        when(pokedex.getPokemon(1)).thenReturn(aquali);
-        when(pokedex.getPokemon(151)).thenThrow(PokedexException.class);
-        when(pokedex.getPokemon(-1)).thenThrow(PokedexException.class);
+        try {
+            when(metadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
+            when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(133, "Aquali", 186, 168, 260));
+        } catch (PokedexException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        pokedex.addPokemon(bulbizarre);
+        pokedex.addPokemon(aquali);
 
         List<Pokemon> pokemons = new ArrayList<>();
         pokemons.add(bulbizarre);
         pokemons.add(aquali);
-
-        when(pokedex.getPokemons()).thenReturn(Collections.unmodifiableList(pokemons));
-        when(pokedex.getPokemons(any(Comparator.class))).thenReturn(Collections.unmodifiableList(pokemons));
     }
 
     @Test
@@ -55,8 +60,9 @@ public class IPokedexTest {
     @Test
     public void testAddPokemon() {
         // Vérifie l'ajout des Pokémon dans le pokédex
-        int bulbizarreIndex = pokedex.addPokemon(bulbizarre);
-        int aqualiIndex = pokedex.addPokemon(aquali);
+        Pokedex pokedex2 = new Pokedex(metadataProvider,pokemonFactory);
+        int bulbizarreIndex = pokedex2.addPokemon(bulbizarre);
+        int aqualiIndex = pokedex2.addPokemon(aquali);
 
         assertEquals(0, bulbizarreIndex);
         assertEquals(1, aqualiIndex);
