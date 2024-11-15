@@ -45,9 +45,7 @@ public class IPokedexFactoryTest {
 
     @Test
     public void testCreatePokedex() {
-        // Test de création d'un pokedex avec les mocks fournis
         IPokedex pokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
-
         assertNotNull(pokedex);
     }
 

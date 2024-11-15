@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
 public class IPokemonFactoryTest {
 
@@ -12,12 +11,9 @@ public class IPokemonFactoryTest {
     private PokemonMetadata pokemonMetadata;
 
     @Before
-    public void setUp() throws PokedexException {
+    public void setUp() {
         // Création d'un PokemonFactory
         pokemonFactory = new PokemonFactory();
-
-        //Je garde le mock pokemonMetaDataProvider, pour m'assurer que le test se focus sur PokemonFactory
-        IPokemonMetadataProvider pokemonMetaDataProvider = mock(IPokemonMetadataProvider.class);
 
         pokemonMetadata = new PokemonMetadata(0,"Bulbizarre",126,126,90);
     }
@@ -33,6 +29,13 @@ public class IPokemonFactoryTest {
         assertEquals(64, createdBulbizarre.getHp());
         assertEquals(4000, createdBulbizarre.getDust());
         assertEquals(4, createdBulbizarre.getCandy());
+    }
+
+    @Test
+    public void testCreatePokemonNull() {
+        // Vérifie la création d'un Pokémon Bulbizarre
+        Pokemon pokemonNull = pokemonFactory.createPokemon(-1, 613, 64, 4000, 4);
+        assertNull(pokemonNull);
     }
 
     @Test
@@ -59,9 +62,7 @@ public class IPokemonFactoryTest {
         assertTrue("La valeur de défense bonus est inférieur à 0", (createdBulbizarre.getDefense() - pokemonMetadata.getDefense()) >= 0);
         assertTrue("La valeur d'endurance bonus est inférieur à 0", (createdBulbizarre.getStamina() - pokemonMetadata.getStamina()) >= 0);
 
-
-        assertTrue("IV must be between 0 and 1", createdBulbizarre.getIv() >= 0 && createdBulbizarre.getIv() <= 1);
-
+        assertTrue("La valeur de l'IV doit être entre 0 et 1", createdBulbizarre.getIv() >= 0 && createdBulbizarre.getIv() <= 1);
 
     }
 

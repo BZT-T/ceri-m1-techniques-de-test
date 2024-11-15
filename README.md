@@ -47,3 +47,13 @@ Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin d
 
 **Badge CodeCov :**
 [![codecov](https://codecov.io/github/BZT-T/ceri-m1-techniques-de-test/graph/badge.svg?token=G6CC6A2T1A)](https://codecov.io/github/BZT-T/ceri-m1-techniques-de-test)
+
+**Choix d'implémentation :**
+
+J'ai d'abord implémenté toutes les classes, puis j'ai modifié les tests pour qu'ils ne testent plus les mocks, mais les classes que j'ai implémentées.
+Dans une classe de test, j'ai décidé de ne "démocker" que la classe à tester et de laisser les autres classes en mock.
+
+Par exemple, dans la classe PokedexFactoryTest, j'ai laissé IPokemonMetadataProvider et IPokemonFactory en mock, car la classe que je teste est PokedexFactory.
+
+J'ai fait ce choix, car, premièrement, le test est centré sur la classe concernée, et, deuxièmement, mon test n'est pas dépendant des autres classes implémentées.
+Cela me garantit la fiabilité du test, car si j'avais également implémenté les autres classes, il se pourrait que le test échoue non pas à cause de la classe à tester, mais à cause des classes dépendantes.
