@@ -2,6 +2,7 @@ package fr.univavignon.pokedex.api;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -37,6 +38,9 @@ public class IPokedexFactoryTest {
         } catch (PokedexException e) {
             throw new RuntimeException(e);
         }
+
+        when(pokemonFactory.createPokemon(133,20,12, 12,99)).thenReturn(aquali);
+
     }
 
     @Test
@@ -71,21 +75,13 @@ public class IPokedexFactoryTest {
             throw new RuntimeException(e);
         }
 
-    }
-    @Test
-    public void testCreatePokedexSameAsPokedexResult_getPokemon() {
+        Pokemon bulbi1 = pokedex.createPokemon(133,20,12, 12,99);
+        Pokemon bulbi2 = pokedexResult.createPokemon(133,20,12, 12,99);
 
-        IPokedex pokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
-
-        pokedex.addPokemon(bulbizarre);
-        pokedex.addPokemon(aquali);
-        pokedexResult.addPokemon(bulbizarre);
-        pokedexResult.addPokemon(aquali);
-
-        try {
-            assertEquals(pokedex.getPokemon(1), pokedexResult.getPokemon(1));
-        } catch (PokedexException e) {
-            throw new RuntimeException(e);
-        }
+        Assertions.assertEquals(bulbi1.getName(), bulbi2.getName());
+        Assertions.assertEquals(bulbi1.getCp(), bulbi2.getCp());
+        Assertions.assertEquals(bulbi1.getHp(), bulbi2.getHp());
+        Assertions.assertEquals(bulbi1.getDust(), bulbi2.getDust());
+        Assertions.assertEquals(bulbi1.getCandy(), bulbi2.getCandy());
     }
 }
