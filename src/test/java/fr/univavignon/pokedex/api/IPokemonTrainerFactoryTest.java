@@ -22,13 +22,7 @@ public class IPokemonTrainerFactoryTest {
         when(pokedexFactory.createPokedex(any(IPokemonMetadataProvider.class), any(IPokemonFactory.class))).thenReturn(pokedex);
 
         // Création d'une implémentation réelle de IPokemonTrainerFactory
-        pokemonTrainerFactory = new IPokemonTrainerFactory() {
-            @Override
-            public PokemonTrainer createTrainer(String name, Team team, IPokedexFactory pokedexFactory) {
-                IPokedex createdPokedex = pokedexFactory.createPokedex(mock(IPokemonMetadataProvider.class), mock(IPokemonFactory.class));
-                return new PokemonTrainer(name, team, createdPokedex);
-            }
-        };
+        pokemonTrainerFactory = new PokemonTrainerFactory();
     }
 
     @Test
