@@ -27,11 +27,11 @@ public class IPokedexFactoryTest {
         pokedexResult = new Pokedex(metadataProvider, pokemonFactory);
 
         // Création de deux instances de Pokemon pour les tests
-        bulbizarre = new Pokemon(0, "Bulbizarre", 126,126,90, 613,64, 4000,
-                4, 56.0);
+        bulbizarre = new Pokemon(0, "Bulbizarre", 126,126,90, new PokemonAttributes(613,64, 4000,
+                4, 56.0));
 
-        aquali = new Pokemon(133,"Aquali",186,168, 260,2729,202, 5000,
-                4,100.0);
+        aquali = new Pokemon(133,"Aquali",186,168, 260,new PokemonAttributes(2729,202, 5000,
+                4,100.0));
 
         try {
             when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(133, "Aquali", 186, 168, 260));

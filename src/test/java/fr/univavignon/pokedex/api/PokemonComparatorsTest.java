@@ -9,9 +9,9 @@ public class PokemonComparatorsTest {
 
     @Test
     public void testCompareByName() {
-        Pokemon pikachu = new Pokemon(25, "Pikachu", 112, 96, 111, 500, 60, 2000, 2, 80.0);
-        Pokemon bulbizarre = new Pokemon(1, "Bulbizarre", 118, 118, 90, 613, 64, 4000, 4, 56.0);
-        Pokemon salameche = new Pokemon(4, "Salameche", 116, 96, 78, 600, 55, 2500, 3, 66.0);
+        Pokemon pikachu = new Pokemon(25, "Pikachu", 112, 96, 111, new PokemonAttributes(500, 60, 2000, 2, 80.0));
+        Pokemon bulbizarre = new Pokemon(1, "Bulbizarre", 118, 118, 90, new PokemonAttributes(613, 64, 4000, 4, 56.0));
+        Pokemon salameche = new Pokemon(4, "Salameche", 116, 96, 78, new PokemonAttributes(600, 55, 2500, 3, 66.0));
 
         List<Pokemon> pokemons = Arrays.asList(pikachu, bulbizarre, salameche);
         pokemons.sort(PokemonComparators.NAME);
@@ -23,9 +23,9 @@ public class PokemonComparatorsTest {
 
     @Test
     public void testCompareByIndex() {
-        Pokemon pikachu = new Pokemon(25, "Pikachu", 112, 96, 111, 500, 60, 2000, 2, 80.0);
-        Pokemon bulbizarre = new Pokemon(1, "Bulbizarre", 118, 118, 90, 613, 64, 4000, 4, 56.0);
-        Pokemon salameche = new Pokemon(4, "Salameche", 116, 96, 78, 600, 55, 2500, 3, 66.0);
+        Pokemon pikachu = new Pokemon(25, "Pikachu", 112, 96, 111, new PokemonAttributes(500, 60, 2000, 2, 80.0));
+        Pokemon bulbizarre = new Pokemon(1, "Bulbizarre", 118, 118, 90, new PokemonAttributes(613, 64, 4000, 4, 56.0));
+        Pokemon salameche = new Pokemon(4, "Salameche", 116, 96, 78, new PokemonAttributes(600, 55, 2500, 3, 66.0));
 
         List<Pokemon> pokemons = Arrays.asList(pikachu, bulbizarre, salameche);
         pokemons.sort(PokemonComparators.INDEX);
@@ -37,9 +37,9 @@ public class PokemonComparatorsTest {
 
     @Test
     public void testCompareByCp() {
-        Pokemon pikachu = new Pokemon(25, "Pikachu", 112, 96, 111, 500, 60, 2000, 2, 80.0);
-        Pokemon bulbizarre = new Pokemon(1, "Bulbizarre", 118, 118, 90, 613, 64, 4000, 4, 56.0);
-        Pokemon salameche = new Pokemon(4, "Salameche", 116, 96, 78, 600, 55, 2500, 3, 66.0);
+        Pokemon pikachu = new Pokemon(25, "Pikachu", 112, 96, 111, new PokemonAttributes(500, 60, 2000, 2, 80.0));
+        Pokemon bulbizarre = new Pokemon(1, "Bulbizarre", 118, 118, 90, new PokemonAttributes(613, 64, 4000, 4, 56.0));
+        Pokemon salameche = new Pokemon(4, "Salameche", 116, 96, 78, new PokemonAttributes(600, 55, 2500, 3, 66.0));
 
         List<Pokemon> pokemons = Arrays.asList(pikachu, bulbizarre, salameche);
         pokemons.sort(PokemonComparators.CP);
