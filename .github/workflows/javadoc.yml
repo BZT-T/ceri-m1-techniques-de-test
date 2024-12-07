@@ -1,0 +1,29 @@
+name: Generate and Publish Javadoc
+
+on:
+  push:
+    branches:
+      - main  # Déclenche le workflow à chaque push sur la branche `main`
+
+jobs:
+  generate-javadoc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11' # Assurez-vous que la version correspond à celle utilisée par votre projet
+          distribution: 'corretto'
+
+      - name: Generate Javadoc
+        run: mvn -B javadoc:javadoc
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PERS }}
+          publish_dir: ./target/site/apidocs # Chemin où Maven génère la Javadoc
