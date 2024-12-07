@@ -26,4 +26,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.PERS }}
-          publish_dir: ./target/report/apidocs # Chemin où Maven génère la Javadoc
+          publish_dir: target/report/apidocs
