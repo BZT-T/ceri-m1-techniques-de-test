@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="9.3">
-<file name="C:\Users\raniw\Desktop\master\Technique de test\ceri-m1-techniques-de-test\src\main\java\fr\univavignon\pokedex\api\PokemonAttributes.java">
+<file name="C:\Users\raniw\Desktop\master\Technique de test\ceri-m1-techniques-de-test\src\main\java\fr\univavignon\pokedex\api\Pokemon.java">
+<error line="27" severity="error" message="Line has trailing spaces." source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck"/>
 </file>
 </checkstyle>
