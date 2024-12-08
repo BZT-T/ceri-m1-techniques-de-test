@@ -53,15 +53,10 @@ jobs:
             pwd
             echo "Listing files before update:"
             ls -R
-            cd ..
             
             rm -rf gh-pages/*
-            cp -r target/site/apidocs/* gh-pages/
-            
-            cd gh-pages
-            git add .
-            git commit -m "Update Javadoc [skip ci]"
-            git push origin gh-pages
+            echo "Listing files after update:"
+            ls -R
 
 workflows:
   version: 2
