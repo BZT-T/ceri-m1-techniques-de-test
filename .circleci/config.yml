@@ -46,7 +46,7 @@ jobs:
             echo 1
             mvn checkstyle:check || true
             echo 2
-            error_count=$(grep -o '<error ' target/checkstyle-result.xml | wc -l || echo 0)
+            error_count=$(grep -o '<error ' target/checkstyle-result.xml | wc -l)
             echo 3
             
             if [ "$error_count" -eq 0 ]; then
@@ -61,7 +61,7 @@ jobs:
             echo 5
             git pull origin master || true
             echo 6
-            echo ${error_count}
+            echo "error : " + ${error_count}
             sed -i "s|https://img.shields.io/badge/Checkstyle_Errors-[0-9]*-[a-z]*|https://img.shields.io/badge/Checkstyle_Errors-${error_count}-${badge_color}|" README.md
             echo 7
             if git diff --quiet README.md; then
