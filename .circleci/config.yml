@@ -42,11 +42,11 @@ jobs:
       - run:
           name: Run Checkstyle
           command: |
-            echo "Avant" 
-            mvn checkstyle:check || true
-            echo "Après" 
-            error_count=$(grep -o '<error ' target/checkstyle-result.xml | wc -l)
             
+            mvn checkstyle:check || true
+            echo "Avant"  
+            error_count=$(grep -o '<error ' target/checkstyle-result.xml | wc -l)
+            echo "Après"
             if [ "$error_count" -eq 0 ]; then
             badge_color="brightgreen" 
             else
