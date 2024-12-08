@@ -40,14 +40,10 @@ jobs:
           command: mvn -B javadoc:javadoc
 
       - run:
-          name: Check README permissions
-          command: ls -l README.md
-
-      - run:
           name: Run Checkstyle
           command: |
             mvn checkstyle:check || true
-            
+            cat target/checkstyle-result.xml
             error_count=$(grep -o '<file .*>\(.*\)' target/checkstyle-result.xml | wc -l)
             
             if [ "$error_count" -gt 0 ]; then
