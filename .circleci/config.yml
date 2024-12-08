@@ -48,6 +48,7 @@ jobs:
                         
             if [ "$error_count" -eq "0 0" ]; then
             badge_color="brightgreen" 
+            error_count=0
             else
             badge_color="red" 
             fi
