@@ -28,7 +28,7 @@ public final class Pokemon extends PokemonMetadata {
      * @param index Pokemon index.////////////////////////////////////////////////////////
      * @param name Pokemon name.
      * @param attack Attack level.
-     * @param defense Defense level.
+     * @param defense Defense level.////////////////////////////////////////////////////////
      * @param stamina Stamina level.
      * @param attributes Object containing
      *        additional attributes of the Pokemon,
