@@ -48,6 +48,8 @@ Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin d
 **Badge CodeCov :**
 [![codecov](https://codecov.io/github/BZT-T/ceri-m1-techniques-de-test/graph/badge.svg?token=G6CC6A2T1A)](https://codecov.io/github/BZT-T/ceri-m1-techniques-de-test)
 
+## Checkstyle Errors
+
 **Choix d'implémentation :**
 
 J'ai d'abord implémenté toutes les classes, puis j'ai modifié les tests pour qu'ils ne testent plus les mocks, mais les classes que j'ai implémentées.

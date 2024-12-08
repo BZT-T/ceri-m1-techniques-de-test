@@ -57,6 +57,19 @@ jobs:
             git add .
             git commit -m "Update Javadoc [skip ci]"
             git push origin gh-pages
+      - run:
+          name: Run Checkstyle
+          command: |
+            mvn checkstyle:check
+            
+            error_count=$(grep -o '<file .*>\(.*\)' target/checkstyle-result.xml | wc -l)
+  
+            sed -i "s/Checkstyle Errors: [ 0-9 ]*/Checkstyle Errors: $error_count/" README.md
+  
+            git add README.md
+            git commit -m "Update README with Checkstyle error count [skip ci]"
+            git push
+
 
 workflows:
   version: 2
