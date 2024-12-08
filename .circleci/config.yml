@@ -45,14 +45,17 @@ jobs:
             
             mvn checkstyle:check || true
             error_count=$(grep -o '<error ' target/checkstyle-result.xml | wc -l || echo 0)
-                        
+            
+            echo "1 - error : "${error_count}
+            
             if [ "$error_count" -eq "0 0" ]; then
+            echo "yes"
             badge_color="brightgreen" 
             error_count=0
             else
             badge_color="red" 
             fi
-            
+            echo "2 - error : "${error_count}
             git config --global user.email "yassinebouazzati2@gmail.com"
             git config --global user.name "BZT-T"
             git pull origin master || true
