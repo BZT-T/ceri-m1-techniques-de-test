@@ -1,0 +1,22 @@
+name: Basic Test Workflow
+
+# Déclenchement du workflow
+on:
+  push: # Lorsqu'une branche reçoit un nouveau commit
+    branches:
+      - main
+  pull_request: # Lorsqu'une pull request est ouverte ou mise à jour
+    branches:
+      - main
+
+# Configuration des jobs
+jobs:
+  test:
+    runs-on: ubuntu-latest # Utilise un environnement Ubuntu
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3 # Télécharge le code source de votre dépôt
+
+      - name: Run a simple test
+        run: echo "Hello, GitHub Actions! Workflow is running correctly."
