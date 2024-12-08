@@ -55,7 +55,6 @@ jobs:
               git commit -m "Update README with Checkstyle error count [skip ci]"
               git push
             fi
-            
 
       - run:
           name: Publish Javadoc to GitHub Pages
