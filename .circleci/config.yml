@@ -42,7 +42,7 @@ jobs:
       - run:
           name: Run Checkstyle
           command: |
-            mvn checkstyle:check
+            mvn checkstyle:check || true
             
             error_count=$(grep -o '<file .*>\(.*\)' target/checkstyle-result.xml | wc -l)
             
