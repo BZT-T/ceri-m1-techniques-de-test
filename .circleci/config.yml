@@ -34,6 +34,31 @@ jobs:
           name: Upload coverage to Codecov
           command: |-
             curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN -f target/site/jacoco/jacoco.xml -r BZT-T/ceri-m1-techniques-de-test
+      # Génération de la Javadoc
+      - run:
+          name: Generate Javadoc
+          command: mvn -B javadoc:javadoc
+
+      # Publication sur GitHub Pages
+      - run:
+          name: Publish Javadoc to GitHub Pages
+          command: |
+          # Configurer git pour publier sur GitHub Pages
+            git config --global user.email "yassinebouazzati2@gmail.com"
+            git config --global user.name "BZT-T"
+            
+            # Cloner la branche gh-pages ou la créer si elle n'existe pas
+            git clone --branch gh-pages https://github.com/BZT-T/ceri-m1-techniques-de-test.git gh-pages
+            cd gh-pages
+            
+            # Copier la Javadoc générée
+            rm -rf *
+            cp -r ../target/report/apidocs/* ./
+            
+            # Commit et push
+            git add .
+            git commit -m "Update Javadoc [skip ci]"
+            git push origin gh-pages
 
 workflows:
   version: 2
