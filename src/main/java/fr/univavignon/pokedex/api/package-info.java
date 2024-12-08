@@ -20,7 +20,7 @@
  * - {@link fr.univavignon.pokedex.api.PokedexException}:
  *    Exception for Pokedex-related errors.
  *
- * @author BZT-T
+ * @author Yassine BZT
  * @version 1.0
  */
 package fr.univavignon.pokedex.api;
