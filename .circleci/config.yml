@@ -58,9 +58,13 @@ jobs:
             
             sed -i "s|https://img.shields.io/badge/Checkstyle_Errors-[0-9]*-[a-z]*|https://img.shields.io/badge/Checkstyle_Errors-${error_count}-${badge_color}|" README.md
             
-            git add README.md
-            git commit -m "Update README with Checkstyle error count [skip ci]"
-            git push
+            if git diff --quiet README.md; then
+                echo "No changes in README.md, skipping commit."
+            else
+                git add README.md
+                git commit -m "Update README with Checkstyle error count [skip ci]"
+                git push
+            fi
 
       - run:
           name: Publish Javadoc to GitHub Pages
