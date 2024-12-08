@@ -25,7 +25,7 @@ public final class Pokemon extends PokemonMetadata {
     /**
      * Default constructor.
      *
-     * @param index Pokemon index.//////////////////////////////////////////////////////////
+     * @param index Pokemon index.
      * @param name Pokemon name.
      * @param attack Attack level.
      * @param defense Defense level.
