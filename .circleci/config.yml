@@ -51,7 +51,7 @@ jobs:
             cd gh-pages
             
             rm -rf *
-            cp -r ../target/report/apidocs/* ./
+            cp -r target/report/apidocs/* ./
             
             git add .
             git commit -m "Update Javadoc [skip ci]"
