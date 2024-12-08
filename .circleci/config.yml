@@ -45,18 +45,16 @@ jobs:
 
             git config --global user.email "yassinebouazzati2@gmail.com"
             git config --global user.name "BZT-T"
-            
-            git clone --branch gh-pages https://github.com/BZT-T/ceri-m1-techniques-de-test.git 
-            
-            echo "Current directory:"
-            pwd
-            echo "Listing files before update:"
-            ls -R
-            
-            cd gh-pages
+
+            git clone --branch gh-pages https://github.com/BZT-T/ceri-m1-techniques-de-test.git gh-pages
+
             rm -rf gh-pages/*
-            echo "Listing files after update:"
-            ls -R
+            cp -r target/site/apidocs/* gh-pages/
+
+            cd gh-pages
+            git add .
+            git commit -m "Update Javadoc [skip ci]"
+            git push origin gh-pages
 
 workflows:
   version: 2
