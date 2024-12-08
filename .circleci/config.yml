@@ -40,6 +40,19 @@ jobs:
           command: mvn -B javadoc:javadoc
 
       - run:
+          name: Run Checkstyle
+          command: |
+            mvn checkstyle:check
+            
+            error_count=$(grep -o '<file .*>\(.*\)' target/checkstyle-result.xml | wc -l)
+            
+            sed -i "s/Checkstyle Errors: [ 0-9 ]*/Checkstyle Errors: $error_count/" README.md
+            
+            git add README.md
+            git commit -m "Update README with Checkstyle error count [skip ci]"
+            git push
+
+      - run:
           name: Publish Javadoc to GitHub Pages
           command: |
             git config --global user.email "yassinebouazzati2@gmail.com"
@@ -57,19 +70,6 @@ jobs:
             git add .
             git commit -m "Update Javadoc [skip ci]"
             git push origin gh-pages
-      - run:
-          name: Run Checkstyle
-          command: |
-            mvn checkstyle:check
-            
-            error_count=$(grep -o '<file .*>\(.*\)' target/checkstyle-result.xml | wc -l)
-  
-            sed -i "s/Checkstyle Errors: [ 0-9 ]*/Checkstyle Errors: $error_count/" README.md
-  
-            git add README.md
-            git commit -m "Update README with Checkstyle error count [skip ci]"
-            git push
-
 
 workflows:
   version: 2
