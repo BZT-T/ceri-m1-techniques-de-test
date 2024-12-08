@@ -49,7 +49,7 @@ Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin d
 [![codecov](https://codecov.io/github/BZT-T/ceri-m1-techniques-de-test/graph/badge.svg?token=G6CC6A2T1A)](https://codecov.io/github/BZT-T/ceri-m1-techniques-de-test)
 
 **Badge CheckStyle :**
-![Checkstyle Errors](https://img.shields.io/badge/Checkstyle_Errors-0-brightgreen)
+![Checkstyle Errors](https://img.shields.io/badge/Checkstyle_Errors-1-red)
 
 
 **Choix d'implémentation :**
