@@ -42,7 +42,9 @@ jobs:
       - run:
           name: Run Checkstyle
           command: |
+            echo "Avant" 
             mvn checkstyle:check || true
+            echo "Après" 
             error_count=$(grep -o '<error ' target/checkstyle-result.xml | wc -l)
             
             if [ "$error_count" -eq 0 ]; then
@@ -55,9 +57,9 @@ jobs:
             git config --global user.name "BZT-T"
             
             git pull origin master || true
-            echo "Avant"           
+                      
             sed -i "s|https://img.shields.io/badge/Checkstyle_Errors-[0-9]*-[a-z]*|https://img.shields.io/badge/Checkstyle_Errors-${error_count}-${badge_color}|" README.md
-            echo "Après"   
+              
             if git diff --quiet README.md; then
                 echo "No changes in README.md, skipping commit."
             else
