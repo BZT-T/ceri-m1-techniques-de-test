@@ -42,16 +42,16 @@ jobs:
       - run:
           name: Publish Javadoc to GitHub Pages
           command: |
-
-            git config --global user.email "yassinebouazzati2@gmail.com"
-            git config --global user.name "BZT-T"
-
-            git clone --branch gh-pages https://github.com/BZT-T/ceri-m1-techniques-de-test.git gh-pages
-
-            rm -rf gh-pages/*
-            cp -r target/site/apidocs/* gh-pages/
-
+            git clone --branch gh-pages https://BZT-T:${GH_PAT}@github.com/BZT-T/ceri-m1-techniques-de-test.git gh-pages
             cd gh-pages
+            
+            # Supprimer les anciens fichiers
+            rm -rf *
+            
+            # Copier la nouvelle documentation générée
+            cp -r ../target/site/apidocs/* ./
+            
+            # Commit et Push
             git add .
             git commit -m "Update Javadoc [skip ci]"
             git push origin gh-pages
