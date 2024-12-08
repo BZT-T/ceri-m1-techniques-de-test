@@ -60,7 +60,8 @@ jobs:
             git config --global user.name "BZT-T"
             echo 5
             git pull origin master || true
-            echo 6          
+            echo 6
+            echo ${error_count}
             sed -i "s|https://img.shields.io/badge/Checkstyle_Errors-[0-9]*-[a-z]*|https://img.shields.io/badge/Checkstyle_Errors-${error_count}-${badge_color}|" README.md
             echo 7
             if git diff --quiet README.md; then
