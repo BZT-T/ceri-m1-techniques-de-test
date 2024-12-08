@@ -44,9 +44,8 @@ jobs:
           command: |
             
             mvn checkstyle:check || true
-            echo "Avant"  
             error_count=$(grep -o '<error ' target/checkstyle-result.xml | wc -l)
-            echo "Après"
+
             if [ "$error_count" -eq 0 ]; then
             badge_color="brightgreen" 
             else
