@@ -9,7 +9,7 @@ package fr.univavignon.pokedex.api;
  * candy count,
  * and individual value (IV).
  *
- * @author Your Name
+ * @author Yassine BZT
  * @version 1.0
  */
 public class PokemonAttributes {
